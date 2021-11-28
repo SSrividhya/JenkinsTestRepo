@@ -1,0 +1,26 @@
+pipeline{
+  agent any{
+    stages{
+      stage('Stage 1'){
+        steps{
+          echo 'Stage 1 of Pipeline'
+          }
+         }
+       stage('Stage 2'){
+        steps{
+          input('Can we proceed to next stage?')
+          }
+         }
+       stage('Stage 3'){
+        when{
+          not{
+            branch "master"
+            }
+           }
+         steps{
+          echo 'Stage 3 with When condition'
+          }
+         }
+		}
+	}
+}
