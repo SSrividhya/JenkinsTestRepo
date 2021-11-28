@@ -21,6 +21,25 @@ pipeline {
           echo 'Stage 3 with When condition'
           }
          }
-		
+		stage('Stage 4 parallel execution'){
+			parallel {
+				stage('Stage 4 a'){
+					steps{
+						echo 'Stage 4 a of pipeline'
+					}
+				}
+				stage('Stage 4 b - reuse node is false - so running in docker agent'){
+					agent{
+					 docker{
+						reuseNode false
+						image 'ubuntu'
+						}
+					}
+					steps{
+						echo 'Stage 4 b of pipeline'
+					}
+				}
+			}
+		}
 	}
 }
