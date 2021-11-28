@@ -1,5 +1,5 @@
-pipeline{
-  agent any{
+pipeline {
+  agent any
     stages{
       stage('Stage 1'){
         steps{
@@ -21,6 +21,6 @@ pipeline{
           echo 'Stage 3 with When condition'
           }
          }
-		}
+		
 	}
 }
