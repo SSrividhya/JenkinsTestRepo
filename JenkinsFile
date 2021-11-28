@@ -12,10 +12,8 @@ pipeline {
           }
          }
        stage('Stage 3'){
-        when{
-          not{
-            branch "master"
-            }
+        when{      
+            branch "master"          
            }
          steps{
           echo 'Stage 3 with When condition'
