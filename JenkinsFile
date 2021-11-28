@@ -12,8 +12,10 @@ pipeline {
           }
          }
        stage('Stage 3'){
-        when{      
-            branch "master"          
+        when{
+          not{
+            branch "master"
+            }
            }
          steps{
           echo 'Stage 3 with When condition'
@@ -26,13 +28,7 @@ pipeline {
 						echo 'Stage 4 a of pipeline'
 					}
 				}
-				stage('Stage 4 b - reuse node is false - so running in docker agent'){
-					agent{
-					 docker{
-						reuseNode false
-						image 'mysql'
-						}
-					}
+				stage('Stage 4 b'){
 					steps{
 						echo 'Stage 4 b of pipeline'
 					}
@@ -41,3 +37,7 @@ pipeline {
 		}
 	}
 }
+
+						
+			
+			
